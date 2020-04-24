@@ -12,12 +12,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     int ancho, alto;
     ListView lvLista;
-    TextView tvNombre, tvGen, tvanio;
     MediaPlayer mp;
+    ArrayList<Anime> animes = new ArrayList<Anime>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
                 {"110","Nisekoi","Comedia, Romance","20 capítulos","En su pasado Raku conoció a una joven chica, que le regaló un collar en forma de candado prometiendo reencontrarse y abrir juntos aquel collar, para revelar qué hay adentro. En la actualidad, Raku estudia con Shuu Maiko y Kosaki Onodera, de la cual sospecha es la chica que en su infancia le dio aquel collar."}
         };
         int[] imagen = {R.drawable.AngelBeats,R.drawable.Another,R.drawable.Clannad,R.drawable.DBZ,R.drawable.ElfenLied,R.drawable.FairyTail,R.drawable.FullMetalA,R.drawable.Inuyasha,R.drawable.Kaichou,R.drawable.NanatsuNoTaizai,R.drawable.Nisekoi};
+        for(int i=0;i<11;i++){
+
+        }
         Adapter adaptador = new Adapter(this, datos, imagen);
         lvLista.setAdapter(adaptador);
         lvLista.setOnItemClickListener(new AdapterView.OnItemClickListener() {

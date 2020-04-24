@@ -34,7 +34,7 @@ public class Adapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return Long.valueOf(datos[position][0]);
     }
 
     @Override
@@ -44,9 +44,9 @@ public class Adapter extends BaseAdapter {
         TextView categoria = vista.findViewById(R.id.tvCategoria);
         TextView duracion = vista.findViewById(R.id.tvDuracion);
         ImageView image = vista.findViewById(R.id.ivImagen);
-        nombre.setText(datos[position][0]);
-        categoria.setText(datos[position][1]);
-        duracion.setText(datos[position][2]);
+        nombre.setText(datos[position][1]);
+        categoria.setText(datos[position][2]);
+        duracion.setText(datos[position][3]);
         image.setImageResource(imagen[position]);
         image.setTag(position);
         return null;
