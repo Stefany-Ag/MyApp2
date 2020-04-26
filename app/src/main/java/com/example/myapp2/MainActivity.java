@@ -2,6 +2,7 @@ package com.example.myapp2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Point;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -16,7 +17,10 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    int ancho, alto;
+    public static final String Nombre = "Nombre";
+    public static final String Categoria = "Categoria";
+    public static final String Duracion = "Duracion";
+    public static final String ANIMES = "Anime";
     ListView lvLista;
     MediaPlayer mp;
     ArrayList<Anime> animes = new ArrayList<Anime>();
@@ -25,13 +29,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        Display display = getWindowManager().getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-
-        ancho = size.x;
-        alto = size.y;
 
         mp = MediaPlayer.create(this, R.raw.away);
         mp.start();
@@ -49,8 +46,9 @@ public class MainActivity extends AppCompatActivity {
                 {"110","Nisekoi","Comedia, Romance","20 capítulos","En su pasado Raku conoció a una joven chica, que le regaló un collar en forma de candado prometiendo reencontrarse y abrir juntos aquel collar, para revelar qué hay adentro. En la actualidad, Raku estudia con Shuu Maiko y Kosaki Onodera, de la cual sospecha es la chica que en su infancia le dio aquel collar."}
         };
         int[] imagen = {R.drawable.AngelBeats,R.drawable.Another,R.drawable.Clannad,R.drawable.DBZ,R.drawable.ElfenLied,R.drawable.FairyTail,R.drawable.FullMetalA,R.drawable.Inuyasha,R.drawable.Kaichou,R.drawable.NanatsuNoTaizai,R.drawable.Nisekoi};
-        for(int i=0;i<11;i++){
-
+        for(int i = 0; i < 10; i++){
+            Anime temporal = new Anime (""+ i,Nombre + i, Categoria + i, Duracion + i);
+            animes.add(temporal);
         }
         Adapter adaptador = new Adapter(this, datos, imagen);
         lvLista.setAdapter(adaptador);
@@ -58,6 +56,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(MainActivity.this, "ID: " + id, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable(ANIMES,animes);
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
     }

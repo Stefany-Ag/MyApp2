@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MyApp2</string>
+    <string name="tvIntro">Choose your favorite anime</string>
+    <string name="scroll_1">Select by name</string>
+    <string name="scroll_2">Select by category</string>
+    <string name="btnLista">Check list</string>
 </resources>

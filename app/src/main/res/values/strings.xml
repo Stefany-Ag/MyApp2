@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">MyApp2</string>
-
+    <string name="tvIntro">Elija sus animes favoritos</string>
+    <string name="scroll_1">Seleccionar por nombre</string>
+    <string name="scroll_2">Seleccionar por categoría</string>
+    <string name="btnLista">Revisar lista</string>
 </resources>
