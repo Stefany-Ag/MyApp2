@@ -29,4 +29,5 @@
         <item>Shonen</item>
         <item>Terror</item>
     </string-array>
+    <string name="error">Please select an option</string>
 </resources>

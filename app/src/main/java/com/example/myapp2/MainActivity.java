@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String Categoria = "Categoria";
     public static final String Duracion = "Duracion";
     public static final String ANIMES = "Anime";
+    String error;
     Spinner spinNombre, spinCategoria;
     ListView lvLista;
     MediaPlayer mp;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        error = getResources().getString(R.string.error);
         mp = MediaPlayer.create(this, R.raw.away);
         mp.start();
         lvLista = findViewById(R.id.lvLista);
@@ -72,12 +74,31 @@ public class MainActivity extends AppCompatActivity {
         spinNombre.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(parent.getItemAtPosition(position).equals("Seleccionar por nombre...")){
+                    Toast.makeText(MainActivity.this,error,Toast.LENGTH_SHORT).show();
+                }else{
 
+                }
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
+                Toast.makeText(MainActivity.this,error,Toast.LENGTH_SHORT).show();
+            }
+        });
+        spinCategoria.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(parent.getItemAtPosition(position).equals("Seleccionar por categoría...")){
+                    Toast.makeText(MainActivity.this,error,Toast.LENGTH_SHORT).show();
+                }else{
 
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                Toast.makeText(MainActivity.this,error,Toast.LENGTH_SHORT).show();
             }
         });
     }

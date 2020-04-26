@@ -28,4 +28,5 @@
         <item>Terror</item>
     </string-array>
     <string name="btnLista">Revisar lista</string>
+    <string name="error">Favor de seleccionar alguna opción</string>
 </resources>
