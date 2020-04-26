@@ -8,13 +8,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     public static final String Nombre = "Nombre";
     public static final String Categoria = "Categoria";
@@ -25,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     ListView lvLista;
     MediaPlayer mp;
     ArrayList<Anime> animes = new ArrayList<Anime>();
+    ImageButton btnAgregar, btnAgregar2;
+    Button btnCheck;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +41,12 @@ public class MainActivity extends AppCompatActivity {
         lvLista = findViewById(R.id.lvLista);
         spinNombre = findViewById(R.id.spinNombre);
         spinCategoria = findViewById(R.id.spinCategoria);
+        btnAgregar = findViewById(R.id.btnAgregar);
+        btnAgregar.setOnClickListener(this);
+        btnAgregar2 = findViewById(R.id.btnAgregar2);
+        btnAgregar2.setOnClickListener(this);
+        btnCheck = findViewById(R.id.btnCheck);
+        btnCheck.setOnClickListener(this);
         ArrayAdapter spinAdapter = ArrayAdapter.createFromResource(this,R.array.spinNombre,android.R.layout.simple_spinner_item);
         spinNombre.setAdapter(spinAdapter);
         ArrayAdapter spinAdapter2 = ArrayAdapter.createFromResource(this,R.array.spinCategoria,android.R.layout.simple_spinner_item);
@@ -54,10 +64,6 @@ public class MainActivity extends AppCompatActivity {
                 {"110","Nisekoi","Comedia, Romance","20 capítulos","En su pasado Raku conoció a una joven chica, que le regaló un collar en forma de candado prometiendo reencontrarse y abrir juntos aquel collar, para revelar qué hay adentro. En la actualidad, Raku estudia con Shuu Maiko y Kosaki Onodera, de la cual sospecha es la chica que en su infancia le dio aquel collar."}
         };
         int[] imagen = {R.drawable.AngelBeats,R.drawable.Another,R.drawable.Clannad,R.drawable.DBZ,R.drawable.ElfenLied,R.drawable.FairyTail,R.drawable.FullMetalA,R.drawable.Inuyasha,R.drawable.Kaichou,R.drawable.NanatsuNoTaizai,R.drawable.Nisekoi};
-        for(int i = 0; i < 10; i++){
-            Anime temporal = new Anime (""+ i,Nombre + i, Categoria + i, Duracion + i);
-            animes.add(temporal);
-        }
         Adapter adaptador = new Adapter(this, datos, imagen);
         lvLista.setAdapter(adaptador);
         lvLista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -71,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        spinNombre.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        /*spinNombre.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if(parent.getItemAtPosition(position).equals("Seleccionar por nombre...")){
@@ -100,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
                 Toast.makeText(MainActivity.this,error,Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
     }
 
     protected void onPause(){
@@ -118,4 +124,23 @@ public class MainActivity extends AppCompatActivity {
         mp.stop();
     }
 
+    @Override
+    public void onClick(View v) {
+        switch(v.getId()){
+            case R.id.btnAgregar:
+                //Anime temporal = new Anime ("",Nombre, Categoria, Duracion);
+                //animes.add(temporal);
+                break;
+            case R.id.btnAgregar2:
+                break;
+            case R.id.btnCheck:
+                if(animes.isEmpty()){
+                    Toast.makeText(MainActivity.this,error,Toast.LENGTH_SHORT).show();
+                }else{
+                    Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+                    startActivity(intent);
+                }
+                break;
+        }
+    }
 }
