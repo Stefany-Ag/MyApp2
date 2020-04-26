@@ -3,14 +3,13 @@ package com.example.myapp2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Point;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.view.Display;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -21,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String Categoria = "Categoria";
     public static final String Duracion = "Duracion";
     public static final String ANIMES = "Anime";
+    Spinner spinNombre, spinCategoria;
     ListView lvLista;
     MediaPlayer mp;
     ArrayList<Anime> animes = new ArrayList<Anime>();
@@ -33,6 +33,12 @@ public class MainActivity extends AppCompatActivity {
         mp = MediaPlayer.create(this, R.raw.away);
         mp.start();
         lvLista = findViewById(R.id.lvLista);
+        spinNombre = findViewById(R.id.spinNombre);
+        spinCategoria = findViewById(R.id.spinCategoria);
+        ArrayAdapter spinAdapter = ArrayAdapter.createFromResource(this,R.array.spinNombre,android.R.layout.simple_spinner_item);
+        spinNombre.setAdapter(spinAdapter);
+        ArrayAdapter spinAdapter2 = ArrayAdapter.createFromResource(this,R.array.spinCategoria,android.R.layout.simple_spinner_item);
+        spinCategoria.setAdapter(spinAdapter2);
         String[][] datos = {{"100","Angel Beats!","Drama, Escolar","13 capítulos","Cuando Otonashi despierta en una escuela desconocida y sin recuerdos, la situación que tiene frente a él es completamente caótica: un grupo de estudiantes le dice que está muerto, que está en el más allá y que debe pelear si no quiere ser aniquilado. ¿El enemigo? Ángel, enviada de Dios y cuya misión es que estos jóvenes acepten sus injustas muertes."},
                 {"101","Another","Gore, Terror","12 capítulos","La historia se centra en una clase maldita y en los hilos del destino que llevan hasta a la muerte a todos los alumnos de la misma. Hace 26 años iba a esa clase una chica llamada Misaki. Buena deportista, popular, le caía bien a todo el mundo, sacaba las mejores notas... Pero un día murió dejando un vacío enorme en sus compañeros de clases. Estos, decididos a no olvidarla, siguieron actuando como si Misaki siguiera viva hasta la graduación."},
                 {"102","Clannad","Drama, Escolar","23 capítulos","Tomoya Okazaki es un joven de tercer año de instituto que parece importarle poco su desempeño escolar, y sumada a su actitud conflictiva originada por problemas familiares, es marcado como “delincuente” en su escuela por la gran mayoría de sus compañeros que están más ocupados pensando en lo que harán una vez acaben la escuela. Tomoya, sin amigos, oficio ni beneficio; conoce providencialmente a Nagisa Furukawa, una chica enfermiza algo lenta en los estudios que se quedó sin amigos puesto que todos ellos ya se habían graduado."},
@@ -61,6 +67,17 @@ public class MainActivity extends AppCompatActivity {
                 bundle.putSerializable(ANIMES,animes);
                 intent.putExtras(bundle);
                 startActivity(intent);
+            }
+        });
+        spinNombre.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
     }

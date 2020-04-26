@@ -1,7 +1,31 @@
 <resources>
     <string name="app_name">MyApp2</string>
     <string name="tvIntro">Elija sus animes favoritos</string>
-    <string name="scroll_1">Seleccionar por nombre</string>
-    <string name="scroll_2">Seleccionar por categoría</string>
+    <string-array name="spinNombre">
+        <item>Seleccionar por nombre...</item>
+        <item>Angel Beats!</item>
+        <item>Another</item>
+        <item>Clannad</item>
+        <item>Dragon Ball Z</item>
+        <item>Elfen Lied</item>
+        <item>Fairy Tail</item>
+        <item>Full Metal Alchemist</item>
+        <item>Inuyasha</item>
+        <item>Kaichou Wa Maid-Sama</item>
+        <item>Nanatsu no Taizai</item>
+        <item>Nisekoi</item>
+    </string-array>
+    <string-array name="spinCategoria">
+        <item>Seleccionar por categoría...</item>
+        <item>Acción</item>
+        <item>Comedia</item>
+        <item>Drama</item>
+        <item>Escolar</item>
+        <item>Fantasía</item>
+        <item>Gore</item>
+        <item>Romance</item>
+        <item>Shonen</item>
+        <item>Terror</item>
+    </string-array>
     <string name="btnLista">Revisar lista</string>
 </resources>

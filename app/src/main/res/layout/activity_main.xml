@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/spinCategoria"
         android:layout_width="280dp"
         android:layout_height="50dp"
         android:background="@color/LightGreen"
@@ -53,10 +53,11 @@
         app:layout_constraintGuide_begin="300dp" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/spinNombre"
         android:layout_width="280dp"
         android:layout_height="50dp"
         android:background="@color/LightGreen"
+        android:entries="@array/spinNombre"
         app:layout_constraintBottom_toTopOf="@+id/guideline9"
         app:layout_constraintEnd_toStartOf="@+id/guideline12"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,7 +83,7 @@
         android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/guideline10"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/spinner2"
+        app:layout_constraintStart_toEndOf="@+id/spinCategoria"
         app:layout_constraintTop_toTopOf="@+id/guideline9"
         app:srcCompat="@drawable/plus" />
 
