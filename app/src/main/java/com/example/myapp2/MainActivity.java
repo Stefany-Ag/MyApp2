@@ -18,13 +18,13 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    public static final String Nombre = "Nombre";
-    public static final String Categoria = "Categoria";
-    public static final String Duracion = "Duracion";
+    //public static final String Nombre = "Nombre";
+    //public static final String Categoria = "Categoria";
+    //public static final String Duracion = "Duracion";
     public static final String ANIMES = "Anime";
-    String error;
+    String error, exitoso;
     Spinner spinNombre, spinCategoria;
-    ListView lvLista;
+    ListView lista;
     MediaPlayer mp;
     ArrayList<Anime> animes = new ArrayList<Anime>();
     ImageButton btnAgregar, btnAgregar2;
@@ -36,9 +36,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         error = getResources().getString(R.string.error);
+        exitoso = getResources().getString(R.string.exitoso);
         mp = MediaPlayer.create(this, R.raw.away);
         mp.start();
-        lvLista = findViewById(R.id.lvLista);
+        lista = findViewById(R.id.lista);
         spinNombre = findViewById(R.id.spinNombre);
         spinCategoria = findViewById(R.id.spinCategoria);
         btnAgregar = findViewById(R.id.btnAgregar);
@@ -65,9 +66,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 {"110","Nisekoi","Comedia, Romance","20 capítulos"}
         };
         int[] imagen = {R.drawable.AngelBeats,R.drawable.Another,R.drawable.Clannad,R.drawable.DBZ,R.drawable.ElfenLied,R.drawable.FairyTail,R.drawable.FullMetalA,R.drawable.Inuyasha,R.drawable.Kaichou,R.drawable.NanatsuNoTaizai,R.drawable.Nisekoi};
-        Adapter adaptador = new Adapter(this, datos, imagen);
+        /*Adapter adaptador = new Adapter(this, datos, imagen);
         lvLista.setAdapter(adaptador);
-        /*lvLista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        lvLista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(MainActivity.this, "ID: " + id, Toast.LENGTH_SHORT).show();
@@ -77,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
-        });*/
+        });
         spinNombre.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -133,10 +134,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+        Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+        Bundle bundle = new Bundle();
         switch(v.getId()){
             case R.id.btnAgregar:
-                //Anime temporal = new Anime ("",Nombre, Categoria, Duracion);
-                //animes.add(temporal);
+                /*Anime temporal = new Anime ("",Nombre, Categoria, Duracion);
+                animes.add(temporal);
+                String anime = spinner.getSelectedItem().toString();
+                Toast.makeText(MainActivity.this, anime + exitoso, Toast.LENGTH_SHORT).show();
+                bundle.putSerializable(ANIMES,anime);
+                intent.putExtras(bundle);
+                startActivity(intent);*/
                 break;
             case R.id.btnAgregar2:
                 break;
@@ -144,7 +152,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if(animes.isEmpty()){
                     Toast.makeText(MainActivity.this,error,Toast.LENGTH_SHORT).show();
                 }else{
-                    Intent intent = new Intent(MainActivity.this, Main2Activity.class);
                     startActivity(intent);
                 }
                 break;

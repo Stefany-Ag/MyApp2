@@ -20,6 +20,7 @@ public class Main2Activity extends AppCompatActivity {
         bundle = getIntent().getExtras();
 
         animes = (ArrayList<Anime>) bundle.getSerializable(MainActivity.ANIMES);
-        Toast.makeText(this,animes.get(0).getNombre(), Toast.LENGTH_SHORT).show();
+
+        int[] imagen = {R.drawable.AngelBeats,R.drawable.Another,R.drawable.Clannad,R.drawable.DBZ,R.drawable.ElfenLied,R.drawable.FairyTail,R.drawable.FullMetalA,R.drawable.Inuyasha,R.drawable.Kaichou,R.drawable.NanatsuNoTaizai,R.drawable.Nisekoi};
     }
 }

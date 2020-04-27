@@ -13,7 +13,6 @@
         android:layout_height="50dp"
         android:background="@color/LightGreen"
         android:entries="@array/spinCategoria"
-        app:layout_constraintBottom_toTopOf="@+id/guideline10"
         app:layout_constraintEnd_toStartOf="@+id/guideline12"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline9" />
@@ -37,14 +36,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="420dp" />
+        app:layout_constraintGuide_begin="596dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="570dp" />
+        app:layout_constraintGuide_begin="703dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline12"
@@ -82,7 +81,6 @@
         android:layout_height="49dp"
         android:background="@null"
         android:scaleType="fitXY"
-        app:layout_constraintBottom_toTopOf="@+id/guideline10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/spinCategoria"
         app:layout_constraintTop_toTopOf="@+id/guideline9"
@@ -113,4 +111,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.8" />
+
+    <ListView
+        android:id="@+id/lista"
+        android:layout_width="280dp"
+        android:layout_height="276dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline10"
+        app:layout_constraintEnd_toStartOf="@+id/guideline12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinCategoria" />
 </androidx.constraintlayout.widget.ConstraintLayout>
