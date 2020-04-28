@@ -9,30 +9,32 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class Adapter extends BaseAdapter {
 
     private static LayoutInflater inflater = null;
-    Context contexto;
-    String[][] datos;
+    private Context contexto;
+    private ArrayList<Anime> datos;
 
-    public Adapter(Context contexto, String[][] datos){
+    public Adapter(Context contexto, ArrayList datos){
         this.contexto = contexto;
         this.datos = datos;
         inflater = (LayoutInflater) contexto.getSystemService(contexto.LAYOUT_INFLATER_SERVICE);
     }
     @Override
     public int getCount() {
-        return datos.length;
+        return datos.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return datos[position];
+        return datos.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return Long.valueOf(datos[position][0]);
+        return Long.valueOf(datos.get(position).id);
     }
 
     @Override
@@ -41,9 +43,9 @@ public class Adapter extends BaseAdapter {
         TextView nombre = vista.findViewById(R.id.tvNombre);
         TextView categoria = vista.findViewById(R.id.tvCategoria);
         TextView duracion = vista.findViewById(R.id.tvDuracion);
-        nombre.setText(datos[position][1]);
-        categoria.setText(datos[position][2]);
-        duracion.setText(datos[position][3]);
+        nombre.setText(datos.get(position).nombre);
+        categoria.setText(datos.get(position).categoria);
+        duracion.setText(datos.get(position).fecha);
         return null;
     }
 }

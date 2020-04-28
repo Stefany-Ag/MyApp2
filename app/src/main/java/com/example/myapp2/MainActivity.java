@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String fecha = String.valueOf(etFecha.getText());
         switch(v.getId()){
             case R.id.btnAgregar:
-                if(!animes.isEmpty() || etNombre.getText().length() == 0 || etFecha.getText().length() == 0) {
+                if(animes.isEmpty() || etNombre.getText().length() == 0 || etFecha.getText().length() == 0) {
                     if (etNombre.getText().length() == 0) {
                         etNombre.setError(error);
                     }
@@ -122,6 +122,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Intent intent = new Intent(MainActivity.this, Main2Activity.class);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable(ANIMES,animes);
+                    intent.putExtras(bundle);
                     startActivity(intent);
                 }
                 break;
