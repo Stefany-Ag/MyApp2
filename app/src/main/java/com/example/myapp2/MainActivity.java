@@ -2,15 +2,17 @@ package com.example.myapp2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -18,17 +20,17 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    //public static final String Nombre = "Nombre";
-    //public static final String Categoria = "Categoria";
-    //public static final String Duracion = "Duracion";
+    public static final String Nombre = "Nombre";
+    public static final String Categoria = "Categoria";
+    public static final String Duracion = "Duracion";
     public static final String ANIMES = "Anime";
-    String error, exitoso;
-    Spinner spinNombre, spinCategoria;
-    ListView lista;
+    String error, errorLista, categoria;
+    Spinner spinCategoria;
     MediaPlayer mp;
     ArrayList<Anime> animes = new ArrayList<Anime>();
-    ImageButton btnAgregar, btnAgregar2;
+    ImageButton btnAgregar;
     Button btnCheck;
+    EditText etNombre, etFecha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,77 +38,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         error = getResources().getString(R.string.error);
-        exitoso = getResources().getString(R.string.exitoso);
+        errorLista = getResources().getString(R.string.errorLista);
         mp = MediaPlayer.create(this, R.raw.away);
         mp.start();
-        lista = findViewById(R.id.lista);
-        spinNombre = findViewById(R.id.spinNombre);
+        etNombre = findViewById(R.id.etNombre);
+        etFecha = findViewById(R.id.etFecha);
         spinCategoria = findViewById(R.id.spinCategoria);
         btnAgregar = findViewById(R.id.btnAgregar);
         btnAgregar.setOnClickListener(this);
-        btnAgregar2 = findViewById(R.id.btnAgregar2);
-        btnAgregar2.setOnClickListener(this);
         btnCheck = findViewById(R.id.btnCheck);
         btnCheck.setOnClickListener(this);
-        ArrayAdapter spinAdapter = ArrayAdapter.createFromResource(this,R.array.spinNombre,android.R.layout.simple_spinner_item);
-        spinNombre.setAdapter(spinAdapter);
-        ArrayAdapter spinAdapter2 = ArrayAdapter.createFromResource(this,R.array.spinCategoria,android.R.layout.simple_spinner_item);
-        spinCategoria.setAdapter(spinAdapter2);
-        String[][] datos = {
-                {"100","Angel Beats!","Drama, Escolar","13 capítulos"},
-                {"101","Another","Gore, Terror","12 capítulos"},
-                {"102","Clannad","Drama, Escolar","23 capítulos"},
-                {"103","Dragon Ball Z","Shonen, Acción","291 capítulos"},
-                {"104","Elfen Lied","Gore, Drama","13 capítulos"},
-                {"105","Fairy Tail","Shonen, Comedia","328 capítulos"},
-                {"106","Full Metal Alchemist","Drama, Fantasía","51 capítulos"},
-                {"107","Inuyasha","Drama, Fantasía","167 capítulos"},
-                {"108","Kaichou wa Maid-Sama","Comedia, Romance","26 capítulos"},
-                {"109","Nanatsu no Taizai","Shonen","24 capítulos"},
-                {"110","Nisekoi","Comedia, Romance","20 capítulos"}
-        };
-        int[] imagen = {R.drawable.AngelBeats,R.drawable.Another,R.drawable.Clannad,R.drawable.DBZ,R.drawable.ElfenLied,R.drawable.FairyTail,R.drawable.FullMetalA,R.drawable.Inuyasha,R.drawable.Kaichou,R.drawable.NanatsuNoTaizai,R.drawable.Nisekoi};
-        /*Adapter adaptador = new Adapter(this, datos, imagen);
-        lvLista.setAdapter(adaptador);
-        lvLista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MainActivity.this, "ID: " + id, Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(MainActivity.this, Main2Activity.class);
-                Bundle bundle = new Bundle();
-                bundle.putSerializable(ANIMES,animes);
-                intent.putExtras(bundle);
-                startActivity(intent);
-            }
-        });
-        spinNombre.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(parent.getItemAtPosition(position).equals("Seleccionar por nombre...")){
-                    Toast.makeText(MainActivity.this,error,Toast.LENGTH_SHORT).show();
-                }else{
-                    try{
-                        if(parent.getItemAtPosition(position).equals("Angel Beats!")){
-
-                        }
-                    }catch(Exception e){
-
-                    }
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                Toast.makeText(MainActivity.this,error,Toast.LENGTH_SHORT).show();
-            }
-        });
-       /* spinCategoria.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        ArrayAdapter spinAdapter = ArrayAdapter.createFromResource(this,R.array.spinCategoria,android.R.layout.simple_spinner_item);
+        spinCategoria.setAdapter(spinAdapter);
+        spinCategoria.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if(parent.getItemAtPosition(position).equals("Seleccionar por categoría...")){
                     Toast.makeText(MainActivity.this,error,Toast.LENGTH_SHORT).show();
                 }else{
-
+                    categoria = parent.getItemAtPosition(position).toString();
+                    Toast.makeText(MainActivity.this,"Elemento seleccionado del spinner categoría: " + parent.getItemAtPosition(position).toString(),Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -114,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onNothingSelected(AdapterView<?> parent) {
                 Toast.makeText(MainActivity.this,error,Toast.LENGTH_SHORT).show();
             }
-        });*/
+        });
     }
 
     protected void onPause(){
@@ -134,27 +85,54 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(MainActivity.this, Main2Activity.class);
-        Bundle bundle = new Bundle();
+        escondeTeclado(this);
+        String nombre = String.valueOf(etNombre.getText());
+        String fecha = String.valueOf(etFecha.getText());
         switch(v.getId()){
             case R.id.btnAgregar:
-                /*Anime temporal = new Anime ("",Nombre, Categoria, Duracion);
-                animes.add(temporal);
-                String anime = spinner.getSelectedItem().toString();
-                Toast.makeText(MainActivity.this, anime + exitoso, Toast.LENGTH_SHORT).show();
-                bundle.putSerializable(ANIMES,anime);
-                intent.putExtras(bundle);
-                startActivity(intent);*/
-                break;
-            case R.id.btnAgregar2:
+                if(!animes.isEmpty() || etNombre.getText().length() == 0 || etFecha.getText().length() == 0) {
+                    if (etNombre.getText().length() == 0) {
+                        etNombre.setError(error);
+                    }
+                    if (etFecha.getText().length() == 0) {
+                        etFecha.setError(error);}
+                    else{Toast.makeText(MainActivity.this, error, Toast.LENGTH_SHORT).show();}
+                }
+                else
+                {
+                    int i = 1;
+                    Anime temporal = new Anime("" + i, nombre + i, categoria + i, fecha + i);
+                    animes.add(temporal);
+                    /*etNombre.setText("");
+                    etFecha.setText("");
+                    spinCategoria.setAdapter("");*/
+                    Toast.makeText(MainActivity.this, "Elemento agregado exitosamente", Toast.LENGTH_SHORT).show();
+                    i++;
+                }
                 break;
             case R.id.btnCheck:
-                if(animes.isEmpty()){
-                    Toast.makeText(MainActivity.this,error,Toast.LENGTH_SHORT).show();
-                }else{
+                if(animes.isEmpty()||etNombre.getText().length() == 0||etFecha.getText().length() == 0) {
+                    if (etNombre.getText().length() == 0) {
+                        etNombre.setError(error);
+                    }
+                    if (etFecha.getText().length() == 0) {
+                        etFecha.setError(error);}
+                    Toast.makeText(MainActivity.this, errorLista, Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable(ANIMES,animes);
                     startActivity(intent);
                 }
                 break;
         }
+    }
+    public static void escondeTeclado(Activity activity){
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        View view = activity.getCurrentFocus();
+        if (view == null) {
+            view = new View(activity);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }

@@ -7,61 +7,51 @@
     android:background="@drawable/pom_poko"
     tools:context=".MainActivity">
 
-    <Spinner
-        android:id="@+id/spinCategoria"
-        android:layout_width="280dp"
-        android:layout_height="50dp"
-        android:background="@color/LightGreen"
-        android:entries="@array/spinCategoria"
-        app:layout_constraintEnd_toStartOf="@+id/guideline12"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline9" />
-
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline8"
+        android:id="@+id/guideline1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="120dp" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline9"
+        android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="270dp" />
+        app:layout_constraintGuide_begin="200dp" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline10"
+        android:id="@+id/guideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="596dp" />
+        app:layout_constraintGuide_begin="280dp" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline11"
+        android:id="@+id/guideline4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="703dp" />
+        app:layout_constraintGuide_begin="360dp" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline12"
+        android:id="@+id/guideline5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="300dp" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="504dp" />
 
     <Spinner
-        android:id="@+id/spinNombre"
+        android:id="@+id/spinCategoria"
         android:layout_width="280dp"
         android:layout_height="50dp"
         android:background="@color/LightGreen"
-        android:entries="@array/spinNombre"
-        app:layout_constraintBottom_toTopOf="@+id/guideline9"
-        app:layout_constraintEnd_toStartOf="@+id/guideline12"
+        android:entries="@array/spinCategoria"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline8" />
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
     <ImageButton
         android:id="@+id/btnAgregar"
@@ -69,21 +59,11 @@
         android:layout_height="49dp"
         android:background="@null"
         android:scaleType="fitXY"
-        app:layout_constraintBottom_toTopOf="@+id/guideline9"
+        app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline12"
-        app:layout_constraintTop_toTopOf="@+id/guideline8"
-        app:srcCompat="@drawable/plus" />
-
-    <ImageButton
-        android:id="@+id/btnAgregar2"
-        android:layout_width="49dp"
-        android:layout_height="49dp"
-        android:background="@null"
-        android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/spinCategoria"
-        app:layout_constraintTop_toTopOf="@+id/guideline9"
+        app:layout_constraintHorizontal_bias="0.85"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline4"
         app:srcCompat="@drawable/plus" />
 
     <Button
@@ -91,14 +71,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/btnLista"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline11"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline10" />
+        app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvIntro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tvIntro"
@@ -106,18 +86,55 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textColor="@color/Yellow"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline8"
+        app:layout_constraintBottom_toTopOf="@+id/guideline1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.8" />
 
-    <ListView
-        android:id="@+id/lista"
+    <EditText
+        android:id="@+id/etFecha"
         android:layout_width="280dp"
-        android:layout_height="276dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline10"
-        app:layout_constraintEnd_toStartOf="@+id/guideline12"
+        android:layout_height="50dp"
+        android:background="@color/PaleGreen"
+        android:ems="10"
+        android:hint="@string/etfecha"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textColor="@color/Black"
+        android:textColorHint="@color/Black"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinCategoria" />
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+
+    <EditText
+        android:id="@+id/etNombre"
+        android:layout_width="280dp"
+        android:layout_height="50dp"
+        android:background="@color/PaleGreen"
+        android:ems="10"
+        android:hint="@string/etNombre"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textColor="@color/Black"
+        android:textColorHint="@color/Black"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline1" />
+
+    <TextView
+        android:id="@+id/tvAgregar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tvAgregar"
+        android:textColor="@color/Black"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline4" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

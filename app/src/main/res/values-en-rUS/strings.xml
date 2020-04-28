@@ -3,22 +3,8 @@
     <string name="app_name">MyApp2</string>
     <string name="tvIntro">Choose your favorite anime</string>
     <string name="btnLista">Check list</string>
-    <string-array name="spinNombre">
-        <item>Select by name...</item>
-        <item>Angel Beats!</item>
-        <item>Another</item>
-        <item>Clannad</item>
-        <item>Dragon Ball Z</item>
-        <item>Elfen Lied</item>
-        <item>Fairy Tail</item>
-        <item>Full Metal Alchemist</item>
-        <item>Inuyasha</item>
-        <item>Kaichou Wa Maid-Sama</item>
-        <item>Nanatsu no Taizai</item>
-        <item>Nisekoi</item>
-    </string-array>
     <string-array name="spinCategoria">
-        <item>Select by category...</item>
+        <item>Select by categorie...</item>
         <item>Accion</item>
         <item>Comedy</item>
         <item>Drama</item>
@@ -29,45 +15,9 @@
         <item>Shonen</item>
         <item>Terror</item>
     </string-array>
-    <string-array name="Acción">
-        <item>Dragon Ball Z</item>
-    </string-array>
-    <string-array name="Comedia">
-        <item>Fairy Tail</item>
-        <item>Kaichou Wa Maid-Sama</item>
-        <item>Nisekoi</item>
-    </string-array>
-    <string-array name="Drama">
-        <item>Angel Beats!</item>
-        <item>Clannad</item>
-        <item>Elfen Lied</item>
-        <item>Full Metal Alchemist</item>
-        <item>Inuyasha</item>
-    </string-array>
-    <string-array name="Escolar">
-        <item>Angel Beats!</item>
-        <item>Clannad</item>
-    </string-array>
-    <string-array name="Fantasía">
-        <item>Inuyasha</item>
-        <item>Full Metal Alchemist</item>
-    </string-array>
-    <string-array name="Gore">
-        <item>Another</item>
-        <item>Elfen Lied</item>
-    </string-array>
-    <string-array name="Romance">
-        <item>Kaichou Wa Maid-Sama</item>
-        <item>Nisekoi</item>
-    </string-array>
-    <string-array name="Shonen">
-        <item>Dragon Ball Z</item>
-        <item>Fairy Tail</item>
-        <item>Nanatsu no Taizai</item>
-    </string-array>
-    <string-array name="Terror">
-        <item>Another</item>
-    </string-array>
-    <string name="error">Please select an option</string>
-    <string name="exitoso">" be added succesfully"</string>
+    <string name="error">Please fill all the fields</string>
+    <string name="etNombre">Type name</string>
+    <string name="etfecha">Type year</string>
+    <string name="tvAgregar">Add to the list</string>
+    <string name="errorLista">Please add something to the list</string>
 </resources>

@@ -3,13 +3,13 @@ package com.example.myapp2;
 import java.io.Serializable;
 
 public class Anime implements Serializable {
-    String id, nombre, categoria, duracion;
+    String id, nombre, categoria, fecha;
 
-    public Anime(String id, String nombre, String categoria, String duracion) {
+    public Anime(String id, String nombre, String categoria, String fecha) {
         this.id = id;
         this.nombre = nombre;
         this.categoria = categoria;
-        this.duracion = duracion;
+        this.fecha = fecha;
     }
 
     public String getId() {
@@ -37,10 +37,10 @@ public class Anime implements Serializable {
     }
 
     public String getDuracion() {
-        return duracion;
+        return fecha;
     }
 
     public void setDuracion(String duracion) {
-        this.duracion = duracion;
+        this.fecha = duracion;
     }
 }
