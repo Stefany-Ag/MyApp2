@@ -20,17 +20,15 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    public static final String Nombre = "Nombre";
-    public static final String Categoria = "Categoria";
-    public static final String Duracion = "Duracion";
     public static final String ANIMES = "Anime";
     String error, errorLista, categoria;
     Spinner spinCategoria;
     MediaPlayer mp;
-    ArrayList<Anime> animes = new ArrayList<Anime>();
+    Anime arrayAnime[] = new Anime[55];
     ImageButton btnAgregar;
     Button btnCheck;
     EditText etNombre, etFecha;
+    Anime temporal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +55,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Toast.makeText(MainActivity.this,error,Toast.LENGTH_SHORT).show();
                 }else{
                     categoria = parent.getItemAtPosition(position).toString();
-                    Toast.makeText(MainActivity.this,"Elemento seleccionado del spinner categoría: " + parent.getItemAtPosition(position).toString(),Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -90,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String fecha = String.valueOf(etFecha.getText());
         switch(v.getId()){
             case R.id.btnAgregar:
-                if(animes.isEmpty() || etNombre.getText().length() == 0 || etFecha.getText().length() == 0) {
+                if(categoria.isEmpty()|| etNombre.getText().length() == 0 || etFecha.getText().length() == 0) {
                     if (etNombre.getText().length() == 0) {
                         etNombre.setError(error);
                     }
@@ -100,18 +97,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 else
                 {
-                    int i = 1;
-                    Anime temporal = new Anime("" + i, nombre + i, categoria + i, fecha + i);
-                    animes.add(temporal);
-                    /*etNombre.setText("");
+                    int i = 0;
+                    temporal = new Anime("" + i , nombre, categoria, fecha);
+                    arrayAnime[i] = temporal;
+                    etNombre.setText("");
                     etFecha.setText("");
-                    spinCategoria.setAdapter("");*/
-                    Toast.makeText(MainActivity.this, "Elemento agregado exitosamente", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, getResources().getString(R.string.exito), Toast.LENGTH_SHORT).show();
                     i++;
                 }
                 break;
             case R.id.btnCheck:
-                if(animes.isEmpty()||etNombre.getText().length() == 0||etFecha.getText().length() == 0) {
+                if(etNombre.getText().length() == 0||etFecha.getText().length() == 0) {
                     if (etNombre.getText().length() == 0) {
                         etNombre.setError(error);
                     }
@@ -119,9 +115,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         etFecha.setError(error);}
                     Toast.makeText(MainActivity.this, errorLista, Toast.LENGTH_SHORT).show();
                 } else {
-                    Intent intent = new Intent(MainActivity.this, Main2Activity.class);
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable(ANIMES,animes);
+                    bundle.putSerializable(ANIMES,arrayAnime);
+                    Intent intent = new Intent(MainActivity.this, Main2Activity.class);
                     intent.putExtras(bundle);
                     startActivity(intent);
                 }

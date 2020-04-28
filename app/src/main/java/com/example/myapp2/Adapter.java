@@ -46,6 +46,6 @@ public class Adapter extends BaseAdapter {
         nombre.setText(datos.get(position).nombre);
         categoria.setText(datos.get(position).categoria);
         duracion.setText(datos.get(position).fecha);
-        return null;
+        return vista;
     }
 }

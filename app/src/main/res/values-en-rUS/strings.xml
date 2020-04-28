@@ -20,4 +20,5 @@
     <string name="etfecha">Type year</string>
     <string name="tvAgregar">Add to the list</string>
     <string name="errorLista">Please add something to the list</string>
+    <string name="exito">" Element added successfully"</string>
 </resources>

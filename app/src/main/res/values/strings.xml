@@ -12,6 +12,7 @@
         <item>Romance</item>
         <item>Shonen</item>
         <item>Terror</item>
+        <item>Videojuegos</item>
     </string-array>
     <string name="etNombre">Introduzca el nombre</string>
     <string name="etfecha">Introduzca el año</string>
@@ -19,4 +20,5 @@
     <string name="btnLista">Revisar lista</string>
     <string name="errorLista">Favor de agregar algo a la lista</string>
     <string name="error">Favor de rellenar todos los campos</string>
+    <string name="exito">Elemento agregado exitosamente</string>
 </resources>
