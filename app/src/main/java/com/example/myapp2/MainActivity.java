@@ -162,14 +162,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 else
                 {
-                    temporal = new Anime1("" + i , nombre, categoria, fecha);
-                    arrayAnime[i] = temporal;
-                    etNombre.setText("");
-                    etFecha.setText("");
-                    spinCategoria.setSelection(0);
-                    Toast.makeText(MainActivity.this, getResources().getString(R.string.exito), Toast.LENGTH_SHORT).show();
-                    i++;
-                    contador = i;
+                    if(Integer.parseInt(fecha) < 1900 || Integer.parseInt(fecha)> 2020){
+                        etFecha.setError(getResources().getString(R.string.extra));
+                    }else {
+                        temporal = new Anime1("" + i, nombre, categoria, fecha);
+                        arrayAnime[i] = temporal;
+                        etNombre.setText("");
+                        etFecha.setText("");
+                        spinCategoria.setSelection(0);
+                        Toast.makeText(MainActivity.this, getResources().getString(R.string.exito), Toast.LENGTH_SHORT).show();
+                        i++;
+                        contador = i;
+                    }
                 }
                 break;
             case R.id.btnCheck:
@@ -189,6 +193,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     intent.putExtras(bundle);
                     startActivity(intent);
                 }
+                break;
+            default:
+                Toast.makeText(MainActivity.this,getResources().getString(R.string.extra),Toast.LENGTH_SHORT).show();
                 break;
         }
     }

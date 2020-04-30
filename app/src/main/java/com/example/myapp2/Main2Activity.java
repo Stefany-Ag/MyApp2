@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -11,7 +13,7 @@ import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class Main2Activity extends AppCompatActivity implements Serializable {
+public class Main2Activity extends AppCompatActivity implements Serializable{
 
     ArrayList<Anime1> animes = new ArrayList<Anime1>();
     int[] imagenes = new int[55];
@@ -35,6 +37,13 @@ public class Main2Activity extends AppCompatActivity implements Serializable {
         }
         Adapter adaptador = new Adapter(Main2Activity.this, animes,imagenes);
         lvLista.setAdapter(adaptador);
+        lvLista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                id = position + 1;//Programar es mi pasión.
+                Toast.makeText(Main2Activity.this,getResources().getString(R.string.ID) +id,Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override

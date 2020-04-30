@@ -22,4 +22,5 @@
     <string name="error">Favor de rellenar todos los campos</string>
     <string name="exito">Elemento agregado exitosamente</string>
     <string name="extra">Dato erróneo</string>
+    <string name="ID">"El ID es: "</string>
 </resources>
