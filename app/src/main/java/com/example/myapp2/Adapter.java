@@ -15,11 +15,13 @@ public class Adapter extends BaseAdapter {
 
     private static LayoutInflater inflater = null;
     private Context contexto;
-    private ArrayList<Anime> datos;
+    private ArrayList<Anime1> datos;
+    int[] datosImagen;
 
-    public Adapter(Context contexto, ArrayList datos){
+    public Adapter(Context contexto, ArrayList<Anime1> datos, int[] datosImagen){
         this.contexto = contexto;
         this.datos = datos;
+        this.datosImagen = datosImagen;
         inflater = (LayoutInflater) contexto.getSystemService(contexto.LAYOUT_INFLATER_SERVICE);
     }
     @Override
@@ -43,9 +45,12 @@ public class Adapter extends BaseAdapter {
         TextView nombre = vista.findViewById(R.id.tvNombre);
         TextView categoria = vista.findViewById(R.id.tvCategoria);
         TextView duracion = vista.findViewById(R.id.tvDuracion);
+        ImageView imagen = vista.findViewById(R.id.ivImagen);
         nombre.setText(datos.get(position).nombre);
         categoria.setText(datos.get(position).categoria);
         duracion.setText(datos.get(position).fecha);
+        imagen.setImageResource(datosImagen[position]);
+        imagen.setTag(position);
         return vista;
     }
 }

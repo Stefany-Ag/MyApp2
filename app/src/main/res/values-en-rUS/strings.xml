@@ -4,7 +4,7 @@
     <string name="tvIntro">Choose your favorite anime</string>
     <string name="btnLista">Check list</string>
     <string-array name="spinCategoria">
-        <item>Select by categorie...</item>
+        <item>Select by categorie</item>
         <item>Accion</item>
         <item>Comedy</item>
         <item>Drama</item>
@@ -14,6 +14,7 @@
         <item>Romance</item>
         <item>Shonen</item>
         <item>Terror</item>
+        <item>Videogames</item>
     </string-array>
     <string name="error">Please fill all the fields</string>
     <string name="etNombre">Type name</string>
@@ -21,4 +22,5 @@
     <string name="tvAgregar">Add to the list</string>
     <string name="errorLista">Please add something to the list</string>
     <string name="exito">" Element added successfully"</string>
+    <string name="extra">Wrong data</string>
 </resources>

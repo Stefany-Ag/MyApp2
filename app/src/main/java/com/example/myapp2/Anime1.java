@@ -2,10 +2,10 @@ package com.example.myapp2;
 
 import java.io.Serializable;
 
-public class Anime implements Serializable {
+public class Anime1 implements Serializable{
     String id, nombre, categoria, fecha;
 
-    public Anime(String id, String nombre, String categoria, String fecha) {
+    public Anime1(String id, String nombre, String categoria, String fecha) {
         this.id = id;
         this.nombre = nombre;
         this.categoria = categoria;
@@ -36,11 +36,11 @@ public class Anime implements Serializable {
         this.categoria = categoria;
     }
 
-    public String getDuracion() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setDuracion(String duracion) {
-        this.fecha = duracion;
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 }

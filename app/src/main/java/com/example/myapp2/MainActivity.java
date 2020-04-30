@@ -17,18 +17,26 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-
+/*
+    Facultad de Ingeniería
+    Computo móvil. Semestre 2020-1.
+    Programado por: Cynthia Estefanía Arreola González.
+*/
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     public static final String ANIMES = "Anime";
+    public static final String IMG = "IMG";
+    public static final String COUNT = "Contador";
     String error, errorLista, categoria;
     Spinner spinCategoria;
     MediaPlayer mp;
-    Anime arrayAnime[] = new Anime[55];
+    Anime1 arrayAnime[] = new Anime1[55];
+    int animon[] = new int[55];
     ImageButton btnAgregar;
     Button btnCheck;
     EditText etNombre, etFecha;
-    Anime temporal;
+    Anime1 temporal;
+    int i = 0, j = 0, contador, imagen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,10 +59,65 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         spinCategoria.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(parent.getItemAtPosition(position).equals("Seleccionar por categoría...")){
+                if(parent.getItemAtPosition(position).equals(parent.getItemAtPosition(0).toString())){
                     Toast.makeText(MainActivity.this,error,Toast.LENGTH_SHORT).show();
                 }else{
                     categoria = parent.getItemAtPosition(position).toString();
+                    switch(position) {
+                        case 1:
+                            imagen = R.drawable.accion;
+                            animon[j] = imagen;
+                            j++;
+                            break;
+                        case 2:
+                            imagen = R.drawable.comedia;
+                            animon[j] = imagen;
+                            j++;
+                            break;
+                        case 3:
+                            imagen = R.drawable.drama;
+                            animon[j] = imagen;
+                            j++;
+                            break;
+                        case 4:
+                            imagen = R.drawable.escolar;
+                            animon[j] = imagen;
+                            j++;
+                            break;
+                        case 5:
+                            imagen = R.drawable.fantasia;
+                            animon[j] = imagen;
+                            j++;
+                            break;
+                        case 6:
+                            imagen = R.drawable.gore;
+                            animon[j] = imagen;
+                            j++;
+                            break;
+                        case 7:
+                            imagen = R.drawable.romance;
+                            animon[j] = imagen;
+                            j++;
+                            break;
+                        case 8:
+                            imagen = R.drawable.shonen;
+                            animon[j] = imagen;
+                            j++;
+                            break;
+                        case 9:
+                            imagen = R.drawable.terror;
+                            animon[j] = imagen;
+                            j++;
+                            break;
+                        case 10:
+                            imagen = R.drawable.videojuegos;
+                            animon[j] = imagen;
+                            j++;
+                            break;
+                        default:
+                            Toast.makeText(MainActivity.this,getResources().getString(R.string.extra),Toast.LENGTH_SHORT).show();
+                            break;
+                    }
                 }
             }
 
@@ -79,7 +142,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onStop();
         mp.stop();
     }
-
     @Override
     public void onClick(View v) {
         escondeTeclado(this);
@@ -87,27 +149,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String fecha = String.valueOf(etFecha.getText());
         switch(v.getId()){
             case R.id.btnAgregar:
-                if(categoria.isEmpty()|| etNombre.getText().length() == 0 || etFecha.getText().length() == 0) {
+                if(spinCategoria.getSelectedItemPosition()== 0|| categoria.isEmpty()|| etNombre.getText().length() == 0 || etFecha.getText().length() == 0) {
                     if (etNombre.getText().length() == 0) {
                         etNombre.setError(error);
                     }
                     if (etFecha.getText().length() == 0) {
                         etFecha.setError(error);}
-                    else{Toast.makeText(MainActivity.this, error, Toast.LENGTH_SHORT).show();}
+                    if(spinCategoria.getSelectedItemPosition()==0)
+                    {
+                        Toast.makeText(MainActivity.this, error, Toast.LENGTH_SHORT).show();
+                    }
                 }
                 else
                 {
-                    int i = 0;
-                    temporal = new Anime("" + i , nombre, categoria, fecha);
+                    temporal = new Anime1("" + i , nombre, categoria, fecha);
                     arrayAnime[i] = temporal;
                     etNombre.setText("");
                     etFecha.setText("");
+                    spinCategoria.setSelection(0);
                     Toast.makeText(MainActivity.this, getResources().getString(R.string.exito), Toast.LENGTH_SHORT).show();
                     i++;
+                    contador = i;
                 }
                 break;
             case R.id.btnCheck:
-                if(etNombre.getText().length() == 0||etFecha.getText().length() == 0) {
+                if(i<1) {
                     if (etNombre.getText().length() == 0) {
                         etNombre.setError(error);
                     }
@@ -117,6 +183,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 } else {
                     Bundle bundle = new Bundle();
                     bundle.putSerializable(ANIMES,arrayAnime);
+                    bundle.putInt(COUNT, contador);
+                    bundle.putIntArray(IMG, animon);
                     Intent intent = new Intent(MainActivity.this, Main2Activity.class);
                     intent.putExtras(bundle);
                     startActivity(intent);

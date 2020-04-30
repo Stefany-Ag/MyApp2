@@ -2,7 +2,7 @@
     <string name="app_name">MyApp2</string>
     <string name="tvIntro">Agregue sus animes favoritos</string>
     <string-array name="spinCategoria">
-        <item>Seleccionar por categoría...</item>
+        <item>Seleccionar por categoría</item>
         <item>Acción</item>
         <item>Comedia</item>
         <item>Drama</item>
@@ -21,4 +21,5 @@
     <string name="errorLista">Favor de agregar algo a la lista</string>
     <string name="error">Favor de rellenar todos los campos</string>
     <string name="exito">Elemento agregado exitosamente</string>
+    <string name="extra">Dato erróneo</string>
 </resources>
